@@ -12,12 +12,17 @@ Sito di una pagina di Kerna Studio, studio di sviluppo software. HTML e CSS puri
 
 ## Come metterlo online
 
-Va bene qualsiasi hosting per siti statici (GitHub Pages, Cloudflare Pages, Netlify o un hosting tradizionale). `index.html` sta nella radice della repo, quindi non serve nessuna impostazione di build.
+Il dominio è **kernastudio.com** (già impostato in `canonical`, `og:url` e `og:image` di `index.html`). Il sito è pensato per **Cloudflare Pages** (gratuito): `index.html` sta nella radice della repo, quindi non serve nessuna impostazione di build.
 
-## Da fare prima di pubblicare
+1. Cloudflare → *Workers & Pages* → *Create* → *Pages* → *Connect to Git* → repo `kerna`, branch `main`.
+2. Comando di build: vuoto. Cartella di output: vuota (la radice).
+3. Dopo il primo deploy: *Custom domains* → *Set up a custom domain* → `kernastudio.com` (e `www.kernastudio.com`). Cloudflare crea da solo i record DNS e l'HTTPS.
 
-1. **Piè di pagina:** aggiungere ragione sociale, partita IVA e sede legale. In fondo a `index.html` c'è un commento che indica il punto.
-2. **Dominio:** quando c'è, in `index.html` togliere i commenti al blocco `canonical / og:image` e sostituire `IL-TUO-DOMINIO` con l'indirizzo vero.
+Ogni push su `main` ripubblica il sito. Va bene anche un altro hosting statico (GitHub Pages, Netlify).
+
+## Da fare
+
+- **Piè di pagina:** aggiungere ragione sociale, partita IVA e sede legale. In fondo a `index.html` c'è un commento che indica il punto.
 
 ## Contatto
 
