@@ -14,12 +14,13 @@ Il sito vero e proprio sta nella cartella `public/`; fuori ci sono solo questo R
 
 ## Come metterlo online
 
-Il dominio è **kernastudio.com** (già impostato in `canonical`, `og:url` e `og:image` di `index.html`). Il sito è pensato per **Cloudflare** (gratuito, file statici serviti da `public/`, nessuna build).
+L'indirizzo principale è **https://www.kernastudio.com** (già impostato in `canonical`, `og:url` e `og:image` di `public/index.html`); `kernastudio.com` senza www reindirizza lì. Il sito è pensato per **Cloudflare** (gratuito, file statici serviti da `public/`, nessuna build).
 
 1. Cloudflare → *Workers & Pages* → *Create application* → *Connect to Git* → repo `kerna`, branch `main`.
 2. Nome del progetto: `kernastudio` (deve essere uguale a `name` in `wrangler.jsonc`; se lo cambi, cambia anche quello).
 3. Comando di build: vuoto. Comando di deploy: `npx wrangler deploy` (già quello predefinito).
-4. Dopo il primo deploy: *Settings* → *Domains & Routes* → *Add* → *Custom domain* → `kernastudio.com` (e `www.kernastudio.com`). Cloudflare crea da solo i record DNS e l'HTTPS.
+4. Dopo il primo deploy: *Settings* → *Domains & Routes* → *Add* → *Custom domain* → `www.kernastudio.com` e `kernastudio.com`. Cloudflare crea da solo i record DNS e l'HTTPS.
+5. Reindirizzamento: dominio `kernastudio.com` → *Rules* → *Redirect Rules* → modello «Redirect from root to WWW» (301), così chi scrive l'indirizzo senza www arriva a quello principale.
 
 Ogni push su `main` ripubblica il sito. Va bene anche un altro hosting statico (GitHub Pages, Netlify): basta servire la cartella `public/`.
 
