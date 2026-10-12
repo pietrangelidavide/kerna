@@ -4,21 +4,24 @@ Sito di una pagina di Kerna Studio, studio di sviluppo software. HTML e CSS puri
 
 ## Contenuto
 
-- `index.html`, `style.css`: la pagina e il suo stile
-- `fonts/`: Outfit e JetBrains Mono, ospitati nel sito (nessuna richiesta a servizi esterni)
-- `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`: icone
-- `og.png`: immagine per le anteprime sui social (1200×630)
-- `robots.txt`
+Il sito vero e proprio sta nella cartella `public/`; fuori ci sono solo questo README e `wrangler.jsonc` (la configurazione di Cloudflare).
+
+- `public/index.html`, `public/style.css`: la pagina e il suo stile
+- `public/fonts/`: Outfit e JetBrains Mono, ospitati nel sito (nessuna richiesta a servizi esterni)
+- `public/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`: icone
+- `public/og.png`: immagine per le anteprime sui social (1200×630)
+- `public/robots.txt`
 
 ## Come metterlo online
 
-Il dominio è **kernastudio.com** (già impostato in `canonical`, `og:url` e `og:image` di `index.html`). Il sito è pensato per **Cloudflare Pages** (gratuito): `index.html` sta nella radice della repo, quindi non serve nessuna impostazione di build.
+Il dominio è **kernastudio.com** (già impostato in `canonical`, `og:url` e `og:image` di `index.html`). Il sito è pensato per **Cloudflare** (gratuito, file statici serviti da `public/`, nessuna build).
 
-1. Cloudflare → *Workers & Pages* → *Create* → *Pages* → *Connect to Git* → repo `kerna`, branch `main`.
-2. Comando di build: vuoto. Cartella di output: vuota (la radice).
-3. Dopo il primo deploy: *Custom domains* → *Set up a custom domain* → `kernastudio.com` (e `www.kernastudio.com`). Cloudflare crea da solo i record DNS e l'HTTPS.
+1. Cloudflare → *Workers & Pages* → *Create application* → *Connect to Git* → repo `kerna`, branch `main`.
+2. Nome del progetto: `kernastudio` (deve essere uguale a `name` in `wrangler.jsonc`; se lo cambi, cambia anche quello).
+3. Comando di build: vuoto. Comando di deploy: `npx wrangler deploy` (già quello predefinito).
+4. Dopo il primo deploy: *Settings* → *Domains & Routes* → *Add* → *Custom domain* → `kernastudio.com` (e `www.kernastudio.com`). Cloudflare crea da solo i record DNS e l'HTTPS.
 
-Ogni push su `main` ripubblica il sito. Va bene anche un altro hosting statico (GitHub Pages, Netlify).
+Ogni push su `main` ripubblica il sito. Va bene anche un altro hosting statico (GitHub Pages, Netlify): basta servire la cartella `public/`.
 
 ## Da fare
 

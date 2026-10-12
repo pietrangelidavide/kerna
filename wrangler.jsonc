@@ -1,0 +1,9 @@
+{
+  // Sito statico di Kerna Studio: Cloudflare pubblica i file della cartella "public".
+  // Il nome deve coincidere con il nome del progetto creato su Cloudflare.
+  "name": "kernastudio",
+  "compatibility_date": "2026-10-12",
+  "assets": {
+    "directory": "./public"
+  }
+}
