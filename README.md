@@ -13,9 +13,9 @@ Il sito vero e proprio sta nella cartella `public/`; fuori ci sono solo questo R
 - `public/robots.txt`
 - `scripts/make-artifact.mjs`: costruisce `dist/artifact.html` e `dist/anteprima.html` (pagina in un solo file, per anteprime fuori da Cloudflare); `dist/` non va nel repo
 
-## Versione 2 (ramo `design-v2`)
+## Versione 2
 
-Sul ramo `design-v2` il sito ha un design nuovo, ispirato ai siti che vendono servizi tech: apertura con anteprima del prodotto, griglia dei servizi, metodo in fila, domande, contatto. Stessi contenuti e stesso marchio della versione su `main`. Per adottarla basta unire il ramo in `main`; la versione 1 resta nella storia di git.
+Dal 13 ottobre 2026 il sito ha un design nuovo, ispirato ai siti che vendono servizi tech: apertura con anteprima del prodotto, griglia dei servizi, metodo in fila, domande, contatto. Stessi contenuti e stesso marchio di prima. La versione 1 resta nella storia di git (commit `a7182a4`).
 
 ## Come metterlo online
 
