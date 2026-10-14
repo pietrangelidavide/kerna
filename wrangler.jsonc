@@ -1,6 +1,7 @@
 {
-  // Sito statico di Kerna Studio: Cloudflare pubblica i file della cartella "public".
-  // Il nome deve coincidere con il nome del progetto creato su Cloudflare.
+  // Sito statico di ENA ONE STUDIO: Cloudflare pubblica i file della cartella "public".
+  // Il nome deve coincidere con il nome del progetto già creato su Cloudflare: non cambiarlo
+  // finché non cambi anche il nome del progetto su Cloudflare (Settings → Rename).
   "name": "kernastudio",
   "compatibility_date": "2026-10-12",
   "assets": {

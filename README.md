@@ -1,38 +1,36 @@
-# Kerna Studio
+# ENA ONE STUDIO · sito
 
-Sito di una pagina di Kerna Studio, studio di sviluppo software. HTML e CSS puri: nessun framework, nessuno script, nessun cookie.
+Sito di una pagina di ENA ONE STUDIO: siti, app e AI. HTML e CSS puri, nessun framework, nessuno script, nessun cookie.
 
 ## Contenuto
 
-Il sito vero e proprio sta nella cartella `public/`; fuori ci sono solo questo README e `wrangler.jsonc` (la configurazione di Cloudflare).
+La cartella `public/` è il sito; fuori ci sono solo questo README e `wrangler.jsonc` (configurazione di Cloudflare).
 
-- `public/index.html`, `public/style.css`: la pagina e il suo stile
-- `public/fonts/`: Outfit e JetBrains Mono, ospitati nel sito (nessuna richiesta a servizi esterni)
-- `public/favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`: icone
+- `public/index.html`, `public/style.css`: pagina e stile (dati strutturati per Google già dentro la pagina)
+- `public/fonts/`: Bricolage Grotesque Regular e Bold, ospitati nel sito (nessuna richiesta a servizi esterni)
+- `public/img/`: logo orizzontale e logo con descrittore
+- `public/favicon.svg`, `favicon-32.png`, `favicon-192.png`, `favicon-512.png`, `apple-touch-icon.png`, `site.webmanifest`: icone
 - `public/og.png`: immagine per le anteprime sui social (1200×630)
-- `public/robots.txt`
-- `scripts/make-artifact.mjs`: costruisce `dist/artifact.html` e `dist/anteprima.html` (pagina in un solo file, per anteprime fuori da Cloudflare); `dist/` non va nel repo
+- `public/robots.txt`, `public/sitemap.xml`
 
-## Versione 2
+## Come funziona la pubblicazione
 
-Dal 13 ottobre 2026 il sito ha un design nuovo, ispirato ai siti che vendono servizi tech: apertura con anteprima del prodotto, griglia dei servizi, metodo in fila, domande, contatto. Stessi contenuti e stesso marchio di prima. La versione 1 resta nella storia di git (commit `a7182a4`).
+Il sito è su Cloudflare (gratuito, file statici serviti da `public/`, nessuna build). Ogni push su `main` ripubblica il sito.
 
-## Come metterlo online
+- Comando di build: vuoto. Comando di deploy: `npx wrangler deploy`.
+- Il `name` in `wrangler.jsonc` deve essere uguale al nome del progetto su Cloudflare. Se rinomini il progetto su Cloudflare, cambia anche quello.
 
-L'indirizzo principale è **https://www.kernastudio.com** (già impostato in `canonical`, `og:url` e `og:image` di `public/index.html`); `kernastudio.com` senza www reindirizza lì. Il sito è pensato per **Cloudflare** (gratuito, file statici serviti da `public/`, nessuna build).
+## Quando cambi dominio
 
-1. Cloudflare → *Workers & Pages* → *Create application* → *Connect to Git* → repo `kerna`, branch `main`.
-2. Nome del progetto: `kernastudio` (deve essere uguale a `name` in `wrangler.jsonc`; se lo cambi, cambia anche quello).
-3. Comando di build: vuoto. Comando di deploy: `npx wrangler deploy` (già quello predefinito).
-4. Dopo il primo deploy: *Settings* → *Domains & Routes* → *Add* → *Custom domain* → `www.kernastudio.com` e `kernastudio.com`. Cloudflare crea da solo i record DNS e l'HTTPS.
-5. Reindirizzamento: dominio `kernastudio.com` → *Rules* → *Redirect Rules* → modello «Redirect from root to WWW» (301), così chi scrive l'indirizzo senza www arriva a quello principale.
+Gli indirizzi dentro i file puntano al dominio attuale. Con il nuovo dominio, sostituisci il vecchio indirizzo (con `www.`) in tre file: `public/index.html` (canonical, Open Graph, dati strutturati), `public/robots.txt` e `public/sitemap.xml`. Poi su Cloudflare: *Settings* → *Domains & Routes* → *Add* → *Custom domain*, e un reindirizzamento 301 dal dominio senza `www` a quello con `www`. Il vecchio indirizzo, se resta attivo, va reindirizzato (301) al nuovo e tenuto per almeno dodici mesi.
 
-Ogni push su `main` ripubblica il sito. Va bene anche un altro hosting statico (GitHub Pages, Netlify): basta servire la cartella `public/`.
+## Prima di dichiarare il lavoro finito
 
-## Da fare
+1. **Profilo Instagram.** I pulsanti usano `@ena_one_studio` (link `https://ig.me/m/ena_one_studio`). Se cambi nome utente, sostituisci `ena_one_studio` nei link `ig.me/m/…` e `instagram.com/…` in `index.html`.
+2. **Marchio.** Prima di stampare o spendere, fai una ricerca di anteriorità del nome su TMview o UIBM (classi 9, 35 e 42). Non è una consulenza legale.
+3. **Piè di pagina.** Aggiungere ragione sociale, partita IVA e sede legale: in fondo a `index.html` c'è un commento che indica il punto. Se aggiungi moduli o strumenti di misura serve anche l'informativa privacy.
+4. **Anteprima gratuita.** Il sito dice «prima di impegnarti vedi un'anteprima» senza dire se è gratuita. Se lo è, scrivilo nelle domande frequenti (e nei dati strutturati, nello stesso blocco in cima alla pagina).
 
-- **Piè di pagina:** aggiungere ragione sociale, partita IVA e sede legale. In fondo a `index.html` c'è un commento che indica il punto.
+## Colori e caratteri
 
-## Contatto
-
-Il pulsante "Scrivici" apre la chat Instagram di `@kernastudio`. Per cambiare profilo, sostituire `kernastudio` nei link `https://ig.me/m/…` e `https://www.instagram.com/…` in `index.html`.
+Inchiostro `#0D0F14`, Carta `#F5F6F8`, Segnale `#FFC21A`, Grafite `#5C6270` (`#A3A9B5` su fondo scuro). Regola: un solo accento, il giallo. Caratteri: Bricolage Grotesque Bold per i titoli, Regular per i testi.
